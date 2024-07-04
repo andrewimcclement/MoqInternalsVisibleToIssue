@@ -23,4 +23,11 @@ internal class InternalsVisibleToTests
         var result = obj.Object.Bar();
         Assert.That(result, Is.EqualTo("Baz"));
     }
+
+    [Test]
+    public void MockControlSucceedsOnAllFrameworks()
+    {
+        var foo = new Mock<Control>();
+        Assert.That(() => foo.Object, Throws.Nothing);
+    }
 }
