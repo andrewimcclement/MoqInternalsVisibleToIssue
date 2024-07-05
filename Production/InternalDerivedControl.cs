@@ -1,6 +1,5 @@
 namespace Production;
 
-internal class InternalDerivedControl : Control
+public class InternalDerivedControl : Control
 {
-    public virtual string Bar() => "Bar";
 }

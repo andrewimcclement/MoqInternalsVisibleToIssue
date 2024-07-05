@@ -15,13 +15,17 @@ internal class InternalsVisibleToTests
     }
 
     [Test]
+    public void FailsOnNetCoreMinimalRepro()
+    {
+        var obj = new Mock<DerivedControlInSameAssembly>();
+        Assert.That(() => obj.Object, Throws.Nothing);
+    }
+
+    [Test]
     public void FailsOnNetCore()
     {
-        var obj = new Mock<InternalDerivedControl>();
-        Assert.That(obj.Object.Bar(), Is.Null);
-        obj.Setup(x => x.Bar()).Returns("Baz");
-        var result = obj.Object.Bar();
-        Assert.That(result, Is.EqualTo("Baz"));
+        var obj = new Mock<DerivedControlInSameAssembly>();
+        Assert.That(() => obj.Object, Throws.Nothing);
     }
 
     [Test]
